@@ -1,17 +1,37 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      Contact
-    </ion-title>
+    <ion-title>Contact</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openPip()">
+        <ion-icon name="open"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
+<ion-content hide-header (onResized)="changeHeader()">
+  <ion-list *ngIf="!hasPip">
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-start></ion-icon>
       @ionicframework
     </ion-item>
   </ion-list>
+
+  <div id="video">Loading the player...</div>
+
+  <ng-container *ngIf="!hasPip">
+    <ion-card *ngFor="let i of [1, 2, 3, 4, 5]">
+      <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png"/>
+      <ion-card-content>
+        <ion-card-title>
+          Nine Inch Nails Live
+        </ion-card-title>
+        <p>
+          The most popular industrial group ever, and largely
+          responsible for bringing the music to a mass audience.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>

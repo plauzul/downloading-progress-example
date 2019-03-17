@@ -1,5 +1,7 @@
 {
   "name": "downloading-progress-example",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

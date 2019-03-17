@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import { DownloadPage } from "../download/download";
+import { ContactPage } from "../contact/contact";
 
 @Component({
   selector: 'page-home',
@@ -8,11 +9,23 @@ import { DownloadPage } from "../download/download";
 })
 export class HomePage {
 
-  constructor(public modalCtrl: ModalController) {}
+  openedDownloadModal: boolean;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {}
 
   toDownload() {
-    const modal = this.modalCtrl.create(DownloadPage, {}, {cssClass: "custom-bottom-modal"});
-    modal.present();
+    if(!this.openedDownloadModal) {
+      this.openedDownloadModal = true;
+      const modal = this.modalCtrl.create(DownloadPage, {}, {cssClass: "custom-bottom-modal"});
+      modal.onDidDismiss(() => {
+        this.openedDownloadModal = false;
+      });
+      modal.present();
+    }
+  }
+
+  toContact() {
+    this.navCtrl.push(ContactPage);
   }
 
 }
