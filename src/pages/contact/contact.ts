@@ -35,13 +35,11 @@ export class ContactPage {
     PictureInPicture.isPip((success) => {
       this.hasPip = (success == 'true');
       if (this.hasPip) {
-        console.log(this.navbar.getNativeElement());
         this.renderer.setStyle(this.navbar.getNativeElement(), 'margin-top', '-56px');
-        this.content.resize();
       } else {
         this.renderer.setStyle(this.navbar.getNativeElement(), 'margin-top', '0px');
-        this.content.resize();
       }
+      this.content.resize();
     });
   }
 }
