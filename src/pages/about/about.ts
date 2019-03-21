@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -7,8 +7,13 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  @ViewChild('pdfviewer') pdfviewer;
 
+  constructor(public navCtrl: NavController) {}
+
+  ionViewWillEnter() {
+    this.pdfviewer.refresh()
+    console.log(this.pdfviewer);
   }
 
 }
