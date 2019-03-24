@@ -9,6 +9,7 @@ export class DownloadPage {
 
   downloadProgress: number = 0;
   intervalProgress: any;
+  hasPlaying: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
@@ -28,6 +29,16 @@ export class DownloadPage {
   }
 
   ionViewWillLeave() {
+    clearInterval(this.intervalProgress);
+  }
+
+  play() {
+    this.hasPlaying = true;
+    this.updateProgress();
+  }
+
+  pause() {
+    this.hasPlaying = false;
     clearInterval(this.intervalProgress);
   }
 

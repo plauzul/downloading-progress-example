@@ -7,6 +7,44 @@
 </ion-header>
 
 <ion-content padding>
-  <p>This is a pdf test:</p>
-  <pdf-viewer #pdfviewer [src]="'http://192.168.0.103/pdf-api/public/aula-pdf'" [zoom]="0.5" [original-size]="false" [fit-to-page]="false"></pdf-viewer>
+  <ion-card>
+    <ion-card-header no-padding>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-only clear (click)="setPage()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only clear (click)="setZoom()">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only clear (click)="resetZoom()">
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only clear (click)="setZoom(1)">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only clear (click)="setPage(1)">
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <pdf-viewer
+        #pdfviewer
+        [src]="'http://192.168.0.103/pdf-api/public/aula-pdf'"
+        [zoom]="zoom"
+        [page]="page"
+        [show-all]="false">
+      </pdf-viewer>
+    </ion-card-content>
+  </ion-card>  
 </ion-content>
